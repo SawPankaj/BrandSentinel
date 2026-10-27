@@ -1,0 +1,20 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      BRANDSENTINEL_MASTER_KEY: ${BRANDSENTINEL_MASTER_KEY:?Set a URL-safe Base64 32-byte key}
+      BRANDSENTINEL_ALLOWED_HOSTS: ${BRANDSENTINEL_ALLOWED_HOSTS:?Set the public reverse-proxy hostname}
+      BRANDSENTINEL_TRUST_PROXY: "1"
+    expose:
+      - "8765"
+    ports:
+      - "127.0.0.1:8765:8765"
+    volumes:
+      - brandsentinel-data:/app/backend/data
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+volumes:
+  brandsentinel-data:

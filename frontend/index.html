@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f7f8"><title>BrandSentinel · Brand governance</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="auth-screen" class="auth-screen" hidden>
+    <form id="login-form" class="auth-card">
+      <a class="brand auth-brand" href="#"><span class="brand-mark">B</span><span>Brand<span class="brand-light">Sentinel</span><small>GOVERNANCE PLATFORM</small></span></a>
+      <div class="eyebrow">SECURE WORKSPACE ACCESS</div><h1>Welcome back</h1><p class="dialog-intro">Sign in to review content and manage your brand knowledge.</p>
+      <div id="auth-message" class="auth-message" role="status" aria-live="polite"></div>
+      <div class="field"><label for="login-email">Work email</label><input id="login-email" type="email" autocomplete="username" required maxlength="254"></div>
+      <div class="field"><label for="login-password">Password</label><input id="login-password" type="password" autocomplete="current-password" required maxlength="1024"></div>
+      <button id="login-submit" class="btn btn-primary auth-submit" type="submit">Sign in</button>
+      <p class="auth-help" id="setup-help" hidden>Initial setup is required. Run <code>python backend/server.py setup-admin</code> from the project folder, then reload this page.</p>
+    </form>
+  </main>
+  <div class="app-shell" id="app-shell" hidden>
+    <aside class="sidebar">
+      <a class="brand" href="#dashboard" aria-label="BrandSentinel home"><span class="brand-mark">B</span><span>Brand<span class="brand-light">Sentinel</span><small>GOVERNANCE PLATFORM</small></span></a>
+      <button class="org-switch" id="workspace-menu" aria-label="Switch workspace"><span class="org-icon" id="workspace-initial">N</span><span><b id="workspace-name">Northstar Learning</b><small>Workspace</small></span><span class="chevron">⌄</span></button>
+      <div class="nav-label">WORKSPACE</div>
+      <nav aria-label="Main navigation">
+        <a class="nav-link active" href="#dashboard" data-page="dashboard"><span>◫</span> Overview</a>
+        <a class="nav-link" href="#reviews" data-page="reviews"><span>▤</span> Reviews <i id="nav-pending">0</i></a>
+        <a class="nav-link" href="#knowledge" data-page="knowledge"><span>◇</span> Brand knowledge</a>
+        <a class="nav-link" href="#insights" data-page="insights"><span>⌁</span> Insights</a>
+        <a class="nav-link" id="team-nav" href="#team" data-page="team" hidden><span>♙</span> Team</a>
+      </nav>
+      <div class="side-bottom"><div class="trust-card"><div class="trust-icon">✓</div><b>Human-led by design</b><p>Every finding has a source. Every decision stays with your team.</p><a href="#knowledge">Explore governance <span>↗</span></a></div><div class="profile"><div class="avatar" id="profile-initials">BS</div><span><b id="profile-name">Workspace user</b><small id="profile-role">Member</small></span><button id="profile-menu" aria-label="Sign out">↪</button></div></div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><div class="breadcrumbs"><span id="breadcrumb-workspace">Workspace</span><span class="slash">/</span><b id="crumb">Overview</b></div><div class="top-actions"><span class="secure"><span></span> Authenticated workspace</span><button class="icon-button" id="help-button" aria-label="Help">?</button><button class="avatar small-avatar" id="account-menu" aria-label="Sign out">BS</button></div></header>
+      <div id="page-content" class="page-content"></div>
+    </main>
+  </div>
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+  <dialog id="review-dialog" class="review-dialog"><form method="dialog"><button class="dialog-close" aria-label="Close">×</button></form><div id="dialog-content"></div></dialog>
+  <script src="core.js"></script><script src="app.js"></script>
+</body>
+</html>
